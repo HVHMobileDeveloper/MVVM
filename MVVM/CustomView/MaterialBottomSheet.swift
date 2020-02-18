@@ -17,6 +17,7 @@ class MaterialBottomSheet: UIViewController {
         mainView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return mainView
     }()
+    
     let widthMain = UIScreen.main.bounds.width
     let heightMain = UIScreen.main.bounds.height
     
