@@ -30,6 +30,7 @@
 		10C9A49B23FC39ED006B0CF8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A49A23FC39ED006B0CF8 /* UserModel.swift */; };
 		10C9A49F23FC3C68006B0CF8 /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A49E23FC3C68006B0CF8 /* UserTableViewController.swift */; };
 		10C9A4A123FC3F54006B0CF8 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A4A023FC3F54006B0CF8 /* UserCell.swift */; };
+		10C9A4A323FC5F43006B0CF8 /* UserTableViewController+MakeConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C9A4A223FC5F43006B0CF8 /* UserTableViewController+MakeConstraints.swift */; };
 		B006359CBE28FE50D9E33AF1 /* Pods_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914554AD6CEF85CB2C454B31 /* Pods_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		10C9A49A23FC39ED006B0CF8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		10C9A49E23FC3C68006B0CF8 /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		10C9A4A023FC3F54006B0CF8 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		10C9A4A223FC5F43006B0CF8 /* UserTableViewController+MakeConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserTableViewController+MakeConstraints.swift"; sourceTree = "<group>"; };
 		44095D0DF38D03BD9A817F18 /* Pods-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-MVVM/Pods-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		914554AD6CEF85CB2C454B31 /* Pods_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB20131D6E705E74E4DEF8C3 /* Pods-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM.release.xcconfig"; path = "Target Support Files/Pods-MVVM/Pods-MVVM.release.xcconfig"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				10C9A49E23FC3C68006B0CF8 /* UserTableViewController.swift */,
 				10C9A4A023FC3F54006B0CF8 /* UserCell.swift */,
+				10C9A4A223FC5F43006B0CF8 /* UserTableViewController+MakeConstraints.swift */,
 			);
 			path = UserTableView;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				10C9A49023FC2B5D006B0CF8 /* UIViewController+Extension.swift in Sources */,
 				10C9A49123FC2B5D006B0CF8 /* MUITextField.swift in Sources */,
 				10C9A48C23FC2B5D006B0CF8 /* CustomAlertView.swift in Sources */,
+				10C9A4A323FC5F43006B0CF8 /* UserTableViewController+MakeConstraints.swift in Sources */,
 				10C9A49323FC2B5D006B0CF8 /* MainViewController.swift in Sources */,
 				10C9A49723FC2B5D006B0CF8 /* AuthenticationVM.swift in Sources */,
 				10C9A46223FC29D6006B0CF8 /* AppDelegate.swift in Sources */,
