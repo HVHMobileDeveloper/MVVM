@@ -11,8 +11,8 @@ import RxSwift
 import RxCocoa
 
 class UserViewModel: NSObject {
-    var searchInput = Variable<String?>("")
-    var searchResult = Variable<[UserModel]>([])
+    var searchInput = BehaviorRelay<String?>(value: "")
+    var searchResult = BehaviorRelay<[UserModel]>(value: [])
     let disposeBag = DisposeBag()
     
     override init() {
@@ -23,7 +23,7 @@ class UserViewModel: NSObject {
     func bindingData(){
         self.searchInput.asObservable().subscribe(onNext: { (text) in
             if text!.isEmpty{
-                self.searchResult.value = []
+                self.searchResult.accept([])
             }else{
                 
                 self.requestJson(url: "https://api.github.com/search/users?q=\(text!)")
@@ -40,8 +40,8 @@ class UserViewModel: NSObject {
     func requestJson(url : String){
         let url = URL(string : url)
         let session = URLSession.shared
-        
-        session.dataTask(with: url!) { (data, res , err) in
+        guard let URL = url else {return}
+        session.dataTask(with: URL) { (data, res , err) in
             print("RESS: \(res) error: \(err)")
             
             if err == nil {
@@ -53,7 +53,7 @@ class UserViewModel: NSObject {
                                 let user = UserModel(object: i)
                                 userArray.append(user)
                             }
-                            self.searchResult.value = userArray
+                            self.searchResult.accept(userArray)
                         }
                     }
                 } catch {}
