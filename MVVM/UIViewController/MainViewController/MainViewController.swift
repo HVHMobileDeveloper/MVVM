@@ -92,8 +92,8 @@ class MainViewController : UIViewController {
     }
     
     func showActionSheet(){
-        let contentViewController = MaterialBottomSheet()
-        actionSheet.actionSheetSetup(layout: contentViewController, context: self)
+        let contentViewController = UserTableViewController()
+        actionSheet.actionSheetSetup(titleCTA: "Close", layout: contentViewController, context: self)
     }
     
     
