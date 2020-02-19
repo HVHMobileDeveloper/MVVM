@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import SnapKit
 import IHKeyboardAvoiding
+import RxSwift
+import RxCocoa
 
 class MainViewController : UIViewController {
     
@@ -39,9 +41,11 @@ class MainViewController : UIViewController {
     var userName : MUITextField!
     var passWord : MUITextField!
     
-    var authenticationMV = AuthenticationVM()
+    //Deprecated var authenticationMV = AuthenticationVM()
+    var loginVM = LoginViewModel()
     var alertPoup = AlertMV()
     var actionSheet = BottomSheetMV()
+    let disposeBag = DisposeBag()
     
     var submit : UIButton!
     
@@ -50,6 +54,7 @@ class MainViewController : UIViewController {
         view.backgroundColor = UIColor.White()
         initializeView()
         onSetupTextField()
+        onObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,16 +75,34 @@ class MainViewController : UIViewController {
         passWord.tf.returnKeyType = .done
     }
     
-    @objc func onSubmitTapped() {
-        authenticationMV.authenticateUserWith(userName.getText(), andPass: passWord.getText())
-        authenticationMV.loginCompletionHandler {[weak self] (isSucess, message) in
-            guard let self = self else {return}
+    fileprivate func onObserver(){
+        _ = userName.tf.rx.text.map{ $0 ?? ""}.bind(to: loginVM.email)
+        _ = passWord.tf.rx.text.map{ $0 ?? ""}.bind(to: loginVM.password)
+        
+        loginVM.isValid.subscribe(onNext: { [unowned self] (isValid) in
+            self.submit.setTitle(isValid ? "true" : "false", for: .normal)
+        }, onError: { (err) in
             
-            self.submit.setTitle(message, for: .normal)
-            if !isSucess{
-                self.onRedirectSubmitSuccessFul()
-            }
-        }
+        }, onCompleted: {
+            
+        }) {
+            
+        }.disposed(by: disposeBag )
+    }
+    
+    @objc func onSubmitTapped() {
+        //        authenticationMV.authenticateUserWith(userName.getText(), andPass: passWord.getText())
+        //        authenticationMV.loginCompletionHandler {[weak self] (isSucess, message) in
+        //            guard let self = self else {return}
+        //
+        //            self.submit.setTitle(message, for: .normal)
+        //            if !isSucess{
+        //                self.onRedirectSubmitSuccessFul()
+        //            }
+        //        }
+        
+        
+        self.onRedirectSubmitSuccessFul()
     }
     
     fileprivate func onRedirectSubmitSuccessFul(){

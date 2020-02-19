@@ -11,7 +11,7 @@ import UIKit
 
 extension UserTableViewController {
     
-    internal func setUpUserTableView(){
+    func setUpUserTableView(){
         mainView = UIView()
         tableView = UITableView()
         tableView.register(UserCell.self, forCellReuseIdentifier: "Cell")
