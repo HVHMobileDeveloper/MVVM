@@ -14,10 +14,20 @@ struct LoginViewModel {
     var email = BehaviorRelay<String>(value: "")
     var password = BehaviorRelay<String>(value: "")
     
-    var isValid : Observable<Bool> {
+    var validMessage : Observable<String> {
         return Observable.combineLatest(email.asObservable(), password.asObservable()) {
             email, password in
-            email.count >= 3 && password.count >= 3
+            if email.count == 0 {
+                return "You must enter email"
+            }else if !email.isValidEmail() {
+                return "You must enter valid email"
+            }else if password.count == 0 {
+                return "You must enter password"
+            } else if password.count < 6 {
+                return "Password must greater 6 characters"
+            }else{
+                return "Success"
+            }
         }
     }
 }

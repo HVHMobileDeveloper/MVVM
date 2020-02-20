@@ -79,8 +79,8 @@ class MainViewController : UIViewController {
         _ = userName.tf.rx.text.map{ $0 ?? ""}.bind(to: loginVM.email)
         _ = passWord.tf.rx.text.map{ $0 ?? ""}.bind(to: loginVM.password)
         
-        loginVM.isValid.subscribe(onNext: { [unowned self] (isValid) in
-            self.submit.setTitle(isValid ? "true" : "false", for: .normal)
+        loginVM.validMessage.subscribe(onNext: { [unowned self] (message) in
+            self.submit.setTitle(message, for: .normal)
         }, onError: { (err) in
             
         }, onCompleted: {
@@ -91,24 +91,9 @@ class MainViewController : UIViewController {
     }
     
     @objc func onSubmitTapped() {
-        //        authenticationMV.authenticateUserWith(userName.getText(), andPass: passWord.getText())
-        //        authenticationMV.loginCompletionHandler {[weak self] (isSucess, message) in
-        //            guard let self = self else {return}
-        //
-        //            self.submit.setTitle(message, for: .normal)
-        //            if !isSucess{
-        //                self.onRedirectSubmitSuccessFul()
-        //            }
-        //        }
-        
-        
-        self.onRedirectSubmitSuccessFul()
+       
     }
-    
-    fileprivate func onRedirectSubmitSuccessFul(){
-        showActionSheet()
-    }
-    
+  
     func showAlertView() {
         let contentViewController = CustomAlertView()
         alertPoup.alerSetup(layout: contentViewController, context: self)
